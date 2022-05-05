@@ -2,15 +2,45 @@
 
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh; /**/
-  overflow: hidden; /*Scroll bar hidden by default*/
-  margin: 0;
+  display: grid;
+  height: 100vh;
+  font-size: 16px;
+  grid-template-areas:
+    'header header header'
+    'nav main sidebar'
+    'nav footer footer';
+}
+
+header,
+footer,
+main,
+aside,
+nav {
+  padding: 20px;
+}
+
+header {
+  grid-area: header;
+}
+footer {
+  grid-area: footer;
+}
+nav {
+  grid-area: nav;
+}
+main {
+  grid-area: main;
+}
+aside {
+  grid-area: sidebar;
+}
+
+.modal {
+  /* display: none; */
 }
