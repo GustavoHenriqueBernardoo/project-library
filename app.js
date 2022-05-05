@@ -28,3 +28,9 @@ book1.bookComplete('n')
 
 console.log(book1)
 // console.log(book1.info())
+
+const modal = document.querySelector('.modal')
+console.log(modal)
+document.querySelector('.addBook').addEventListener('click', () => {
+  modal.style.opacity = 1
+})

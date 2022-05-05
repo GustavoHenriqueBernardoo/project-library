@@ -9,42 +9,14 @@
   </head>
   <body>
     <header>
-      <h1>Welcome to the Gustavo's Library</h1>
+      <h1>Library</h1>
+      <img
+        src="https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+        alt="book"
+      />
     </header>
     <main>
       <button class="addBook">Add Book</button>
-      <div class="modal">
-        <form action="" class="book-form">
-          <div class="form-row">
-            <label for="title-book">Title</label>
-            <input id="title-book" name="title-book" type="text" />
-          </div>
-          <div class="form-row">
-            <label for="author-book">Author</label>
-            <input type="text" id="author-book" class="author-book" />
-          </div>
-          <div class="form-row">
-            <label for="pages-book">Pages</label>
-            <input type="text" id="pages-book" class="pages-book" />
-          </div>
-          <fieldset class="legacy-form-row">
-            <legend>Did you read this book already?</legend>
-            <input id="yes-type-1" name="yes-type" type="radio" value="yes" />
-            <label for="yes-type-1" class="radio-label"
-              >Yes I already read it!</label
-            >
-            <input
-              id="no-type-2"
-              name="no-type"
-              type="radio"
-              value="workshop"
-              checked
-            />
-            <label for="no-type2" class="radio-label">No</label>
-          </fieldset>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
     </main>
     <nav>
       <p>Book 1</p>
@@ -54,6 +26,33 @@
       <p>Total of pages: 80</p>
     </aside>
     <footer>Gustavo Bernardo</footer>
+    <div class="modal">
+      <a class="btnClose" href="#">X</a>
+      <form action="" class="book-form">
+        <div class="form-row">
+          <label for="title-book">Title</label>
+          <input id="title-book" name="title-book" type="text" />
+        </div>
+        <div class="form-row">
+          <label for="author-book">Author</label>
+          <input type="text" id="author-book" class="author-book" />
+        </div>
+        <div class="form-row">
+          <label for="pages-book">Pages</label>
+          <input type="text" id="pages-book" class="pages-book" />
+        </div>
+        <fieldset class="legacy-form-row">
+          <legend>Did you read this book already?</legend>
+          <input id="yes-type-1" name="yes-type" type="radio" value="yes" />
+          <label for="yes-type-1" class="radio-label"
+            >Yes I already read it!</label
+          >
+          <input id="no-type-2" name="no-type2" type="radio" value="workshop" />
+          <label for="no-type2" class="radio-label">No</label>
+        </fieldset>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
     <script src="./app.js"></script>
   </body>
 </html>
