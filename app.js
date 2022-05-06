@@ -33,4 +33,12 @@ const modal = document.querySelector('.modal')
 console.log(modal)
 document.querySelector('.addBook').addEventListener('click', () => {
   modal.style.opacity = 1
+  modal.style.zIndex = 1
+
+})
+
+const closeBtn = document.querySelector('.btnClose').addEventListener('click', () => {
+  modal.style.opacity = 0
+  modal.style.zIndex = -1
+
 })
