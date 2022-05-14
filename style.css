@@ -141,6 +141,15 @@ footer {
   border-radius: 20px;
 }
 
+.modal .message-add {
+  color: green;
+  position: absolute;
+  top: 10%;
+  background: burlywood;
+  border-radius: 40px;
+  padding: 10px 20px;
+}
+
 .modal .btnClose {
   font-family: 'Raleway', sans-serif;
   position: absolute;

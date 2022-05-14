@@ -99,18 +99,31 @@
     <footer>Gustavo Bernardo</footer>
     <div class="modal">
       <a class="btnClose" href="#">X</a>
-      <form action="" class="book-form">
+      <p class="message-add" hidden>The book was added</p>
+      <form name="book-form" class="book-form">
         <div class="form-row">
           <label for="title-book">Title</label>
-          <input id="title-book" name="title-book" type="text" />
+          <input id="title-book" name="title" type="text" value="Mistborn" />
         </div>
         <div class="form-row">
           <label for="author-book">Author</label>
-          <input type="text" id="author-book" class="author-book" />
+          <input
+            type="text"
+            name="author"
+            id="author-book"
+            class="author-book"
+            value="Brandon Sanderson"
+          />
         </div>
         <div class="form-row">
           <label for="pages-book">Pages</label>
-          <input type="number" id="pages-book" class="pages-book" />
+          <input
+            type="number"
+            name="pages"
+            id="pages-book"
+            class="pages-book"
+            value="850"
+          />
         </div>
         <fieldset class="legacy-form-row">
           <legend>Did you read this book already?</legend>
@@ -121,7 +134,7 @@
           <input id="no-type-2" name="no-type2" type="radio" value="workshop" />
           <label for="no-type2" class="radio-label">No</label>
         </fieldset>
-        <button type="submit">Submit</button>
+        <button class="submit">Submit</button>
       </form>
     </div>
     <script src="./app.js"></script>
