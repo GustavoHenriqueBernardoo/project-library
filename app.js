@@ -32,7 +32,20 @@ function clearAndClose() {
   document.getElementById('pages-book').value = ''
 
   // Showing alert message that the books was added
-  setTimeout(function () { document.querySelector('.message-add').hidden = false }, 3000)
+  // setTimeout(function () { document.querySelector('.message-add').hidden = false }, 3000)
+}
+
+function showAlert(message, className) {
+  const messageUI = document.querySelector('.message')
+  // Setting the hidden attribute to false
+  messageUI.hidden = false
+  // Adding the className to the messageUI
+  messageUI.classList.add(className)
+  messageUI.innerText = message
+  // After 3 seconds the message will fade away
+  setTimeout(function () {
+    messageUI.hidden = true
+  }, 3000)
 }
 
 
@@ -69,11 +82,20 @@ const bookForm = document.querySelector('[name="book-form"]').addEventListener('
   // Instantiating a new book
   const newBook = new Book(title, author, pages)
 
-  // Adding the new book 
-  addBookToLibrary(newBook)
+  // Check if all fields are not empty
+  if (title === '' || author === '' || pages === '') {
 
-  // Cleaning the fields
-  clearAndClose()
+    // Call the show alert function with the message and the className
+    showAlert('Please fill all fields', 'error')
+  } else {
+    // Adding the new book 
+    addBookToLibrary(newBook)
+
+    // Cleaning the fields
+    clearAndClose()
+
+  }
+
 
   // Prevent the default behavior of the submit button
   e.preventDefault()

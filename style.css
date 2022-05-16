@@ -141,13 +141,17 @@ footer {
   border-radius: 20px;
 }
 
-.modal .message-add {
+.modal .message {
   color: green;
   position: absolute;
   top: 10%;
   background: burlywood;
   border-radius: 40px;
   padding: 10px 20px;
+}
+
+.modal .message.error {
+  color: red;
 }
 
 .modal .btnClose {
