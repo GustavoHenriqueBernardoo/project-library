@@ -1,4 +1,13 @@
-let library = []
+let library = [{
+  'Title': 'Sample',
+  'Author': 'GUstavo',
+  'Pages': 5000
+},
+{
+  'Title': 'Sample2',
+  'Author': 'Henrique',
+  'Pages': 1000
+}]
 
 function Book(title, author, pages, complete) {
   this.title = title,
@@ -22,6 +31,36 @@ Book.prototype.bookComplete = function (answer) {
 function addBookToLibrary(book) {
   library.push({ 'Title': book.title, 'Author': book.author, 'Pages': book.pages })
   console.log(library)
+}
+
+// Lopping through the library and calling a function for each book
+library.forEach(book => {
+  addToUI(book)
+  console.log(book)
+})
+
+// Function which add book to the interface
+function addToUI(book) {
+  // creating a new div
+  const div = document.createElement('div')
+  div.classList.add('new-book')
+  // 
+  const navBook = document.querySelector('nav')
+  console.log(navBook)
+
+  // Insert 
+  div.innerHTML = `
+  <a class="remove-book" href="#">X</a>
+
+  <p>${book.Title}</p>
+  <p>Pages: ${book.Pages}</p>
+  <p>Author: ${book.Author}</p>
+  <p>Read already: Yes</p>`
+
+  // adding book to the nav
+  navBook.appendChild(div)
+
+  console.log(book.Title)
 }
 
 function clearAndClose() {
