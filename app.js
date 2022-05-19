@@ -36,6 +36,12 @@ function addBookToLibrary(book) {
   console.log(library)
 }
 
+function deleteBook(target) {
+  if (target.classList.contains('remove-book')) {
+    target.parentElement.remove()
+  }
+}
+
 function updateUI() {
   // Lopping through the library and calling a function for each book
   library.forEach(book => {
@@ -154,5 +160,18 @@ const bookForm = document.querySelector('[name="book-form"]').addEventListener('
   // Prevent the default behavior of the submit button
   e.preventDefault()
 })
+
+const bookList = document.getElementById('book-list').addEventListener('click', (e) => {
+
+  // Removing the book which was clicked
+  deleteBook(e.target)
+
+  // Show a message that the book was added
+  showAlert('Book deleted', 'success')
+
+  // Prevent the default behavior of the submit button
+  e.preventDefault()
+})
+
 
 updateUI()
