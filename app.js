@@ -1,13 +1,15 @@
-let library = [{
-  'Title': 'Sample',
-  'Author': 'GUstavo',
-  'Pages': 5000
-},
-{
-  'Title': 'Sample2',
-  'Author': 'Henrique',
-  'Pages': 1000
-}]
+let library = [
+  {
+    'Title': 'Sample',
+    'Author': 'GUstavo',
+    'Pages': 5000
+  },
+  {
+    'Title': 'Sample2',
+    'Author': 'Henrique',
+    'Pages': 1000
+  }
+]
 
 function Book(title, author, pages, complete) {
   this.title = title,
@@ -30,14 +32,18 @@ Book.prototype.bookComplete = function (answer) {
 
 function addBookToLibrary(book) {
   library.push({ 'Title': book.title, 'Author': book.author, 'Pages': book.pages })
+  updateUI()
   console.log(library)
 }
 
-// Lopping through the library and calling a function for each book
-library.forEach(book => {
-  addToUI(book)
-  console.log(book)
-})
+function updateUI() {
+  // Lopping through the library and calling a function for each book
+  library.forEach(book => {
+    addToUI(book)
+  })
+  // Resetting the array to not add twice
+  library = []
+}
 
 // Function which add book to the interface
 function addToUI(book) {
@@ -46,7 +52,6 @@ function addToUI(book) {
   div.classList.add('new-book')
   // 
   const navBook = document.querySelector('nav')
-  console.log(navBook)
 
   // Insert 
   div.innerHTML = `
@@ -55,12 +60,14 @@ function addToUI(book) {
   <p>${book.Title}</p>
   <p>Pages: ${book.Pages}</p>
   <p>Author: ${book.Author}</p>
-  <p>Read already: Yes</p>`
+  <p>Read already:</p>
+  <label class="switch">
+    <input type="checkbox" checked />
+    <span class="slider round"></span>
+  </label>`
 
   // adding book to the nav
   navBook.appendChild(div)
-
-  console.log(book.Title)
 }
 
 function clearAndClose() {
@@ -69,6 +76,12 @@ function clearAndClose() {
   document.getElementById('title-book').value = ''
   document.getElementById('author-book').value = ''
   document.getElementById('pages-book').value = ''
+
+  // Close the modal after 3 seconds
+  // setTimeout(function () {
+  //   modal.style.opacity = 0
+  //   modal.style.zIndex = -1
+  // }, 3000)
 
   // Showing alert message that the books was added
   // setTimeout(function () { document.querySelector('.message-add').hidden = false }, 3000)
@@ -130,13 +143,16 @@ const bookForm = document.querySelector('[name="book-form"]').addEventListener('
     // Adding the new book 
     addBookToLibrary(newBook)
 
+    // Show a message that the book was added
+    showAlert('Book were added', 'success')
+
     // Cleaning the fields
     clearAndClose()
-
   }
 
 
   // Prevent the default behavior of the submit button
   e.preventDefault()
 })
-console.log(bookForm)
+
+updateUI()
