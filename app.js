@@ -58,7 +58,6 @@ function addToUI(book) {
   div.classList.add('new-book')
   // 
   const navBook = document.querySelector('nav')
-
   // Insert 
   div.innerHTML = `
   <a class="remove-book" href="#">X</a>
@@ -68,7 +67,7 @@ function addToUI(book) {
   <p>Author: ${book.Author}</p>
   <p>Read already:</p>
   <label class="switch">
-    <input type="checkbox" checked />
+    <input class="checkbox" type="checkbox" checked />
     <span class="slider round"></span>
   </label>`
 
@@ -106,20 +105,29 @@ function showAlert(message, className) {
   }, 3000)
 }
 
+function openModal() {
 
-const modal = document.querySelector('.modal')
-
-// Open the modal
-document.querySelector('.addBook').addEventListener('click', () => {
+  // Inner modal
   modal.style.opacity = 1
   modal.style.zIndex = 999
-})
 
-// Close the modal
-const closeBtn = document.querySelector('.btnClose').addEventListener('click', () => {
+  // Modal Outer
+  modalOuter.style.opacity = 1
+  modalOuter.style.pointerEvents = 'all'
+}
+
+function closeModal() {
+
+  // Inner modal
   modal.style.opacity = 0
   modal.style.zIndex = -1
-})
+
+  // Modal Outer
+  modalOuter.style.opacity = 0
+  modalOuter.style.pointerEvents = 'none'
+}
+
+
 
 // const submitBtn = document.querySelector('.submit').addEventListener('click', (e) => {
 //   e.preventDefault()
@@ -166,12 +174,37 @@ const bookList = document.getElementById('book-list').addEventListener('click', 
   // Removing the book which was clicked
   deleteBook(e.target)
 
+
+  // checkbox
+  if (e.target.classList.contains('checkbox')) {
+    console.log(e.target.checked)
+  }
+
   // Show a message that the book was added
   showAlert('Book deleted', 'success')
-
-  // Prevent the default behavior of the submit button
-  e.preventDefault()
 })
 
 
+// Get modal elements
+const modal = document.querySelector('.modal')
+const modalOuter = document.querySelector('.modal-outer')
+
+// Open the modal
+document.querySelector('.addBook').addEventListener('click', openModal)
+
+// Close the modal
+const closeBtn = document.querySelector('.btnClose').addEventListener('click', closeModal)
+
+modalOuter.addEventListener('click', (e) => {
+
+  // Checking if clicked in the modal inside or outside
+  const isOutside = !e.target.closest('.modal')
+
+  // If you click in the outside modal, close the modal
+  if (isOutside) {
+    closeModal()
+  }
+})
+
+// Update the UI means, to loop through the library and update the UI
 updateUI()

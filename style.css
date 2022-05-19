@@ -63,6 +63,7 @@ main {
 /* ============= Nav new Books */
 
 nav {
+  font-family: 'DM Serif Display', serif;
   grid-area: nav;
   overflow-x: hidden;
 }
@@ -97,7 +98,7 @@ nav .remove-book {
   font-weight: bold;
   border-radius: 100%;
   background-color: #0a0a0a;
-  z-index: 4;
+  z-index: auto;
   color: #fff;
   line-height: 1.3rem;
   text-align: center;
@@ -181,6 +182,37 @@ footer {
 }
 
 /* ================== MODAL */
+
+.modal-outer {
+  /* display: grid; */
+  background: hsla(0, 0%, 9%, 0.566);
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  /* Hide this modal until we need it */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.modal-outer .sample {
+  background-color: hsla(0, 88%, 29%, 0.566);
+  letter-spacing: 2px;
+  border-radius: 20px;
+  font-size: 17px;
+  padding: 5px 10px;
+  text-align: center;
+  color: #fff;
+  width: 500px;
+  position: fixed;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, -50%);
+}
 
 .modal {
   opacity: 0;
