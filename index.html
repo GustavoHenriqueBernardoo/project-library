@@ -20,7 +20,7 @@
       <button class="addBook">Add Book</button>
     </main>
     <nav id="book-list">
-      <div class="new-book">
+      <!-- <div class="new-book">
         <a class="remove-book" href="#">X</a>
 
         <p>Book 1</p>
@@ -31,7 +31,7 @@
           <input class="checkbox" type="checkbox" />
           <span class="slider round"></span>
         </label>
-      </div>
+      </div> -->
     </nav>
     <aside>
       <p>Book info:</p>
@@ -71,17 +71,12 @@
           </div>
           <fieldset class="legacy-form-row">
             <legend>Did you read this book already?</legend>
-            <input id="yes-type-1" name="yes-type" type="radio" value="yes" />
+            <input id="yes-type-1" name="answer" type="radio" value="true" />
             <label for="yes-type-1" class="radio-label"
               >Yes I already read it!</label
             >
-            <input
-              id="no-type-2"
-              name="no-type2"
-              type="radio"
-              value="workshop"
-            />
-            <label for="no-type2" class="radio-label">No</label>
+            <input id="no-type-1" name="answer" type="radio" value="false" />
+            <label for="no-type1" class="radio-label">No</label>
           </fieldset>
           <button class="submit">Submit</button>
         </form>

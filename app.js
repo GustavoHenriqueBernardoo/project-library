@@ -2,12 +2,15 @@ let library = [
   {
     'Title': 'Sample',
     'Author': 'GUstavo',
-    'Pages': 5000
+    'Pages': 5000,
+    'Complete': true
+
   },
   {
     'Title': 'Sample2',
     'Author': 'Henrique',
-    'Pages': 1000
+    'Pages': 1000,
+    'Complete': false
   }
 ]
 
@@ -22,18 +25,18 @@ Book.prototype.info = function () {
   return `${this.title} by ${this.author}, ${this.pages} pages, ${this.complete}`
 }
 
-Book.prototype.bookComplete = function (answer) {
-  if (answer === 'yes') {
-    return this.complete = `You read ${this.title}`
-  } else {
-    return this.complete = `You didn't read ${this.title} yet`
-  }
-}
+// Book.prototype.bookComplete = function (answer) {
+//   if (answer === 'yes') {
+//     return this.complete = `You read ${this.title}`
+//   } else {
+//     return this.complete = `You didn't read ${this.title} yet`
+//   }
+// }
 
 function addBookToLibrary(book) {
-  library.push({ 'Title': book.title, 'Author': book.author, 'Pages': book.pages })
+  library.push({ 'Title': book.title, 'Author': book.author, 'Pages': book.pages, 'Complete': book.complete })
   updateUI()
-  console.log(library)
+  // console.log(library)
 }
 
 function deleteBook(target) {
@@ -67,7 +70,7 @@ function addToUI(book) {
   <p>Author: ${book.Author}</p>
   <p>Read already:</p>
   <label class="switch">
-    <input class="checkbox" type="checkbox" checked />
+    <input class="checkbox" type="checkbox" ${book.Complete ? 'checked' : ''} />
     <span class="slider round"></span>
   </label>`
 
@@ -81,15 +84,8 @@ function clearAndClose() {
   document.getElementById('title-book').value = ''
   document.getElementById('author-book').value = ''
   document.getElementById('pages-book').value = ''
-
-  // Close the modal after 3 seconds
-  // setTimeout(function () {
-  //   modal.style.opacity = 0
-  //   modal.style.zIndex = -1
-  // }, 3000)
-
-  // Showing alert message that the books was added
-  // setTimeout(function () { document.querySelector('.message-add').hidden = false }, 3000)
+  document.getElementById('yes-type-1').checked = false
+  document.getElementById('no-type-1').checked = false
 }
 
 function showAlert(message, className) {
@@ -127,15 +123,22 @@ function closeModal() {
   modalOuter.style.pointerEvents = 'none'
 }
 
+
+// Get the book form and add an event listener to it when clicked submit
 const bookForm = document.querySelector('[name="book-form"]').addEventListener('submit', (e) => {
 
   // Get form values
   const title = e.currentTarget.title.value
   const author = e.currentTarget.author.value
   const pages = e.currentTarget.pages.value
+  let complete = false
+
+  // Checking if the user read or not the book
+  if (e.currentTarget.answer.value === 'true') complete = true
+  // if the user did read the book, reassign the variable to true
 
   // Instantiating a new book
-  const newBook = new Book(title, author, pages)
+  const newBook = new Book(title, author, pages, complete)
 
   // Check if all fields are not empty
   if (title === '' || author === '' || pages === '') {
@@ -143,11 +146,12 @@ const bookForm = document.querySelector('[name="book-form"]').addEventListener('
     // Call the show alert function with the message and the className
     showAlert('Please fill all fields', 'error')
   } else {
+
     // Adding the new book 
     addBookToLibrary(newBook)
 
     // Show a message that the book was added
-    showAlert('Book were added', 'success')
+    showAlert('Book added', 'success')
 
     // Cleaning the fields
     clearAndClose()
@@ -160,6 +164,7 @@ const bookForm = document.querySelector('[name="book-form"]').addEventListener('
   e.preventDefault()
 })
 
+// add event listener to the books that were already added and checking if you are deleting it or toggling the read functionality
 const bookList = document.getElementById('book-list').addEventListener('click', (e) => {
 
   if (e.target.classList.contains('remove-book')) {
@@ -172,7 +177,7 @@ const bookList = document.getElementById('book-list').addEventListener('click', 
 
   // checkbox
   if (e.target.classList.contains('checkbox')) {
-    console.log(e.target.checked)
+    // console.log(e.target.checked)
 
   }
 })
@@ -188,6 +193,7 @@ document.querySelector('.addBook').addEventListener('click', openModal)
 // Close the modal
 const closeBtn = document.querySelector('.btnClose').addEventListener('click', closeModal)
 
+// Click outside functionality
 modalOuter.addEventListener('click', (e) => {
 
   // Checking if clicked in the modal inside or outside
