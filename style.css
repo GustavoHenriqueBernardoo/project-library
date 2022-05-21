@@ -59,6 +59,24 @@ main {
   justify-content: center;
   align-items: center;
 }
+main .message {
+  color: green;
+  font-size: 20px;
+  position: absolute;
+  top: 10%;
+  justify-self: flex-start;
+  background: hsla(0, 0%, 9%, 0.315);
+  border-radius: 40px;
+  padding: 30px 40px;
+}
+
+main .message.error {
+  color: red;
+}
+
+main .message.success {
+  color: green;
+}
 
 /* ============= Nav new Books */
 
@@ -231,23 +249,6 @@ footer {
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-}
-
-.modal .message {
-  color: green;
-  position: absolute;
-  top: 10%;
-  background: burlywood;
-  border-radius: 40px;
-  padding: 10px 20px;
-}
-
-.modal .message.error {
-  color: red;
-}
-
-.modal .message.success {
-  color: green;
 }
 
 .modal .btnClose {

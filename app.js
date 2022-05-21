@@ -15,7 +15,7 @@ function Book(title, author, pages, complete) {
   this.title = title,
     this.author = author,
     this.pages = pages,
-    this.complete = "You didn't read it yet"
+    this.complete = complete
 }
 
 Book.prototype.info = function () {
@@ -127,17 +127,6 @@ function closeModal() {
   modalOuter.style.pointerEvents = 'none'
 }
 
-
-
-// const submitBtn = document.querySelector('.submit').addEventListener('click', (e) => {
-//   e.preventDefault()
-//   const title = document.getElementById('title-book').value
-//   const author = document.getElementById('author-book').value
-//   const pages = document.getElementById('pages-book').value
-//   const newBook = new Book(title, author, pages)
-//   addBookToLibrary(newBook)
-// })
-
 const bookForm = document.querySelector('[name="book-form"]').addEventListener('submit', (e) => {
 
   // Get form values
@@ -164,6 +153,8 @@ const bookForm = document.querySelector('[name="book-form"]').addEventListener('
     clearAndClose()
   }
 
+  // close modal
+  closeModal()
 
   // Prevent the default behavior of the submit button
   e.preventDefault()
@@ -171,17 +162,19 @@ const bookForm = document.querySelector('[name="book-form"]').addEventListener('
 
 const bookList = document.getElementById('book-list').addEventListener('click', (e) => {
 
-  // Removing the book which was clicked
-  deleteBook(e.target)
+  if (e.target.classList.contains('remove-book')) {
+    // Removing the book which was clicked
+    deleteBook(e.target)
+    // Show a message that the book was added
+    showAlert('Book deleted', 'success')
+  }
 
 
   // checkbox
   if (e.target.classList.contains('checkbox')) {
     console.log(e.target.checked)
-  }
 
-  // Show a message that the book was added
-  showAlert('Book deleted', 'success')
+  }
 })
 
 
