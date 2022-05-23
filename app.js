@@ -21,8 +21,21 @@ function Book(title, author, pages, complete) {
     this.complete = complete
 }
 
-Book.prototype.info = function () {
-  return `${this.title} by ${this.author}, ${this.pages} pages, ${this.complete}`
+Book.prototype.info = function (book) {
+  // const booksUI = document.querySelectorAll('.new-book')
+  // console.log(booksUI)
+  // const asideUI = document.querySelector('aside')
+  // asideUI.innerHTML = `
+  // <div class="row-split">
+  //       <h2>Book info</h2>
+  //       <p>Total of Books: ${booksUI.length}</p>
+  //       <p>BOoks Read:</p>
+  //       <p>Books Unread</p>
+  //       <p>Total of pages: 80</p>
+  // </div>
+
+  // `
+  // return `${this.title} by ${this.author}, ${this.pages} pages, ${this.complete}`
 }
 
 // Book.prototype.bookComplete = function (answer) {
@@ -37,6 +50,7 @@ function addBookToLibrary(book) {
   library.push({ 'Title': book.title, 'Author': book.author, 'Pages': book.pages, 'Complete': book.complete })
   updateUI()
   // console.log(library)
+  console.log(book.info())
 }
 
 function deleteBook(target) {
@@ -52,6 +66,26 @@ function updateUI() {
   })
   // Resetting the array to not add twice
   library = []
+
+  const booksUI = document.querySelectorAll('.new-book')
+  const booksUiPages = document.querySelectorAll('.new-book .pages')
+  const booksUiComplete = document.querySelectorAll('.new-book .checkbox')
+  console.log(booksUiPages)
+  booksUiPages.forEach(book => {
+    console.log(book.textContent)
+  })
+  const asideUI = document.querySelector('aside')
+  asideUI.innerHTML = `
+  <div class="row-split">
+        <h2>Book info</h2>
+        <p>Total of Books: ${booksUI.length}</p>
+        <p>Books Read: </p>
+        <p>Books Unread</p>
+        <p>Total of pages: 80</p>
+  </div>
+  
+  `
+
 }
 
 // Function which add book to the interface
@@ -66,7 +100,7 @@ function addToUI(book) {
   <a class="remove-book" href="#">X</a>
 
   <p>${book.Title}</p>
-  <p>Pages: ${book.Pages}</p>
+  <p class="pages">Pages: ${book.Pages}</p>
   <p>Author: ${book.Author}</p>
   <p>Read already:</p>
   <label class="switch">

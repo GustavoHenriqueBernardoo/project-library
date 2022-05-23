@@ -18,7 +18,7 @@ body {
     'nav main sidebar'
     'footer footer footer';
   grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 80px 1fr 40px;
+  grid-template-rows: 90px 1fr 40px;
 }
 
 header,
@@ -27,7 +27,7 @@ main,
 aside,
 nav {
   padding: 20px;
-  border: 1px black solid;
+  border: 1px grey solid;
 }
 
 /* ============= Header */
@@ -39,15 +39,21 @@ header {
   align-items: center;
   color: #fff;
 
-  background-image: url('https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');
+  background-image: url('./img/alfons-morales-YLSwjSy7stw-unsplash.jpg');
   background-repeat: cover;
   background-position: center;
 }
 
 header img {
+  margin-right: 1rem;
   border-radius: 50%;
   width: 70px;
   height: 75px;
+  box-shadow: 1px 10px 1px hsla(0, 0%, 9%, 0.315);
+}
+
+header img:hover {
+  transform: scale(1.2);
 }
 
 /* ============= Main */
@@ -188,6 +194,14 @@ input:checked + .slider:before {
 
 aside {
   grid-area: sidebar;
+}
+
+aside .row-split p {
+  border: #0a0a0a 1px solid;
+  padding: 5px;
+  margin: 10px;
+  align-self: center;
+  justify-self: center;
 }
 
 /* ================ Footer */
