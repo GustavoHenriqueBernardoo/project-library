@@ -90,7 +90,8 @@ main .message.success {
 
 main .addBook {
   font-family: inherit;
-  padding: 10px 20px;
+  font-size: 1.5rem;
+  padding: 20px 40px;
   border-radius: 10px;
   box-shadow: 10px 5px 2px hsla(0, 0%, 9%, 0.315);
   border: none;
@@ -351,8 +352,10 @@ footer {
 .book-form .submit {
   padding: 20px 10px;
   border-radius: 10px;
+  border: none;
   width: 100%;
 
+  font-size: 1rem;
   font-family: inherit;
   box-shadow: 10px 5px 2px hsla(0, 0%, 9%, 0.315);
 }
@@ -373,4 +376,11 @@ form .form-row {
 
 .form-row label {
   width: 80px;
+  font-weight: bold;
+  color: brown;
+}
+
+.form-row input {
+  font-family: inherit;
+  font-size: 1rem;
 }
