@@ -67,21 +67,33 @@ function updateUI() {
   // Resetting the array to not add twice
   library = []
 
+  // Get books were added
   const booksUI = document.querySelectorAll('.new-book')
+  // Get pages from the books were added
   const booksUiPages = document.querySelectorAll('.new-book .pages')
+  // Get the checkbox from the books added
   const booksUiComplete = document.querySelectorAll('.new-book .checkbox')
-  console.log(booksUiPages)
+
+  // Array to store all books pages
+  let pagesCount = []
+
+  // Looping through the pages node list
   booksUiPages.forEach(book => {
-    console.log(book.textContent)
+
+    //pushing only the pages numbers to the array
+    pagesCount.push(parseInt(book.textContent.split(' ')[1]))
+    console.log(pagesCount)
   })
+
+  // Updating the Book info values
   const asideUI = document.querySelector('aside')
   asideUI.innerHTML = `
   <div class="row-split">
         <h2>Book info</h2>
         <p>Total of Books: ${booksUI.length}</p>
         <p>Books Read: </p>
-        <p>Books Unread</p>
-        <p>Total of pages: 80</p>
+        <p>Books Unread: </p>
+        <p>Total of pages: ${pagesCount.reduce((acc, num) => acc += num, 0)}</p>
   </div>
   
   `
