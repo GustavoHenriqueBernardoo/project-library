@@ -50,7 +50,6 @@ function addBookToLibrary(book) {
   library.push({ 'Title': book.title, 'Author': book.author, 'Pages': book.pages, 'Complete': book.complete })
   updateUI()
   // console.log(library)
-  console.log(book.info())
 }
 
 function deleteBook(target) {
@@ -74,6 +73,7 @@ function updateUI() {
   // Get the checkbox from the books added
   const booksUiComplete = document.querySelectorAll('.new-book .checkbox')
 
+
   // Array to store all books pages
   let pagesCount = []
 
@@ -82,32 +82,42 @@ function updateUI() {
 
     //pushing only the pages numbers to the array
     pagesCount.push(parseInt(book.textContent.split(' ')[1]))
-    console.log(pagesCount)
+    // console.log(pagesCount)
   })
+
+  // Array to store all books pages
+  let readCount = []
+
+  booksUiComplete.forEach(book => {
+    readCount.push(book.checked)
+  })
+
+  console.log(readCount.filter(elem => elem === true).length)
 
   // Updating the Book info values
   const asideUI = document.querySelector('aside')
+
+  // Updating the page information, using filter and reduce prototypes
   asideUI.innerHTML = `
   <div class="row-split">
         <h2>Book info</h2>
         <p>Total of Books: ${booksUI.length}</p>
-        <p>Books Read: </p>
-        <p>Books Unread: </p>
+        <p>Books Read: ${readCount.filter(elem => elem === true).length} </p>
+        <p>Books Unread: ${readCount.filter(elem => elem === false).length}</p>
         <p>Total of pages: ${pagesCount.reduce((acc, num) => acc += num, 0)}</p>
   </div>
-  
   `
-
 }
 
 // Function which add book to the interface
 function addToUI(book) {
   // creating a new div
   const div = document.createElement('div')
+  // add class to the div
   div.classList.add('new-book')
-  // 
+
   const navBook = document.querySelector('nav')
-  // Insert 
+  // Insert book into the HTML 
   div.innerHTML = `
   <a class="remove-book" href="#">X</a>
 
@@ -218,13 +228,14 @@ const bookList = document.getElementById('book-list').addEventListener('click', 
     deleteBook(e.target)
     // Show a message that the book was added
     showAlert('Book deleted', 'success')
+    updateUI()
   }
 
 
   // checkbox
   if (e.target.classList.contains('checkbox')) {
     // console.log(e.target.checked)
-
+    updateUI()
   }
 })
 
