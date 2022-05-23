@@ -1,16 +1,16 @@
 let library = [
   {
-    'Title': 'Sample',
-    'Author': 'GUstavo',
-    'Pages': 5000,
+    'Title': 'Atomic Habits',
+    'Author': 'James Clear',
+    'Pages': 319,
     'Complete': true
 
   },
   {
-    'Title': 'Sample2',
-    'Author': 'Henrique',
-    'Pages': 1000,
-    'Complete': false
+    'Title': 'The Way of Kings',
+    'Author': 'Brandon S.',
+    'Pages': 1007,
+    'Complete': true
   }
 ]
 
@@ -162,6 +162,7 @@ function openModal() {
   // Inner modal
   modal.style.opacity = 1
   modal.style.zIndex = 999
+  modal.style.transform = 'translate(-50%, -50%)'
 
   // Modal Outer
   modalOuter.style.opacity = 1
@@ -173,6 +174,8 @@ function closeModal() {
   // Inner modal
   modal.style.opacity = 0
   modal.style.zIndex = -1
+  modal.style.transform = 'translate(0)'
+
 
   // Modal Outer
   modalOuter.style.opacity = 0
