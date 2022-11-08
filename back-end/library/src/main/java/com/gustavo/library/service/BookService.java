@@ -9,6 +9,8 @@ public interface BookService {
 
   Book saveBook(Book book);
 
+  Book updateComplete(Long id);
+
   void deleteBook(Long id);
 
   List<Book> getBooks();

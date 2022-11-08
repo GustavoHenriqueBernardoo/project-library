@@ -18,7 +18,6 @@ public class BooksServiceImpl implements BookService {
   @Override
   public Book getBook(Long id) {
     // Check if the value is null or empty
-
     Optional<Book> book = bookRepository.findById(id);
 
     if (book.isPresent()) {
@@ -33,19 +32,20 @@ public class BooksServiceImpl implements BookService {
   @Override
   public Book saveBook(Book book) {
     // TODO Auto-generated method stub
-    return null;
+    return bookRepository.save(book);
   }
 
   @Override
   public void deleteBook(Long id) {
     // TODO Auto-generated method stub
-
+    bookRepository.deleteById(id);
   }
 
   @Override
   public List<Book> getBooks() {
     // TODO Auto-generated method stub
-    return null;
+    List<Book> books = (List<Book>) bookRepository.findAll();
+    return books;
   }
 
   static Book unwrapBook(Optional<Book> entity, Long id) {
@@ -53,6 +53,15 @@ public class BooksServiceImpl implements BookService {
       return entity.get();
     // else return and BookNotFoundException
     return null;
+  }
+
+  @Override
+  public Book updateComplete(Long id) {
+    // TODO Auto-generated method stub
+    Book book = bookRepository.findById(id).get();
+    Boolean completeOppositeBoolean = !(book.getComplete());
+    book.setComplete(completeOppositeBoolean);
+    return bookRepository.save(book);
   }
 
 }
