@@ -15,6 +15,7 @@ import lombok.*;
 
 @RequiredArgsConstructor
 @NoArgsConstructor
+@ToString
 
 @Entity
 @Table(name = "book")
@@ -36,10 +37,10 @@ public class Book {
 
   @NonNull
   @Column(name = "pages", nullable = false)
-  private int pages;
+  private Integer pages;
 
   @NonNull
   @Column(name = "complete", nullable = false)
-  private boolean complete;
+  private Boolean complete;
 
 }
