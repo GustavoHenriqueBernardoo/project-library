@@ -48,13 +48,6 @@ public class BooksServiceImpl implements BookService {
     return books;
   }
 
-  static Book unwrapBook(Optional<Book> entity, Long id) {
-    if (entity.isPresent())
-      return entity.get();
-    // else return and BookNotFoundException
-    return null;
-  }
-
   @Override
   public Book updateComplete(Long id) {
     // TODO Auto-generated method stub
@@ -64,4 +57,10 @@ public class BooksServiceImpl implements BookService {
     return bookRepository.save(book);
   }
 
+  static Book unwrapBook(Optional<Book> entity, Long id) {
+    if (entity.isPresent())
+      return entity.get();
+    // else return and BookNotFoundException
+    return null;
+  }
 }

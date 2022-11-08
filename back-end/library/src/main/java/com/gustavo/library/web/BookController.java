@@ -2,8 +2,6 @@ package com.gustavo.library.web;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -56,7 +54,7 @@ public class BookController {
     return new ResponseEntity<>(HttpStatus.NOT_FOUND);
   }
 
-  // Update complete field
+  // Update the book complete field
   @PutMapping("/{id}")
   public ResponseEntity<Book> updateComplete(@PathVariable Long id) {
     return new ResponseEntity<Book>(bookService.updateComplete(id), HttpStatus.OK);
