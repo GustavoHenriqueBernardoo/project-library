@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 import lombok.*;
@@ -25,17 +26,18 @@ public class Book {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @NotBlank
+  @NotBlank(message = "Tittle cannot be blank")
   @NonNull
   @Column(name = "title", nullable = false)
   private String title;
 
-  @NotBlank
+  @NotBlank(message = "Author cannot be blank")
   @NonNull
   @Column(name = "author", nullable = false)
   private String author;
 
   @NonNull
+  @Min(value = 1, message = "Number of pages cannot be less or equal to zero")
   @Column(name = "pages", nullable = false)
   private Integer pages;
 

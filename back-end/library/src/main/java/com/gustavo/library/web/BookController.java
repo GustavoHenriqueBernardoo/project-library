@@ -2,6 +2,8 @@ package com.gustavo.library.web;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,7 +43,7 @@ public class BookController {
 
   @PostMapping
   // add a book
-  public ResponseEntity<Object> saveBook(@RequestBody Book book) {
+  public ResponseEntity<Object> saveBook(@Valid @RequestBody Book book) {
     System.out.println("Created");
 
     return new ResponseEntity<>(bookService.saveBook(book), HttpStatus.CREATED);

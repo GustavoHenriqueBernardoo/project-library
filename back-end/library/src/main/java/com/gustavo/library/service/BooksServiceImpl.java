@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gustavo.library.entity.Book;
+import com.gustavo.library.exception.BookNotFoundException;
 import com.gustavo.library.repository.BookRepository;
 
 @Service
@@ -23,34 +24,29 @@ public class BooksServiceImpl implements BookService {
     if (book.isPresent()) {
       return book.get();
     } else {
-      throw new IllegalArgumentException();
+      throw new BookNotFoundException(id);
     }
 
-    // return null;
   }
 
   @Override
   public Book saveBook(Book book) {
-    // TODO Auto-generated method stub
     return bookRepository.save(book);
   }
 
   @Override
   public void deleteBook(Long id) {
-    // TODO Auto-generated method stub
     bookRepository.deleteById(id);
   }
 
   @Override
   public List<Book> getBooks() {
-    // TODO Auto-generated method stub
     List<Book> books = (List<Book>) bookRepository.findAll();
     return books;
   }
 
   @Override
   public Book updateComplete(Long id) {
-    // TODO Auto-generated method stub
     Book book = bookRepository.findById(id).get();
     Boolean completeOppositeBoolean = !(book.getComplete());
     book.setComplete(completeOppositeBoolean);
