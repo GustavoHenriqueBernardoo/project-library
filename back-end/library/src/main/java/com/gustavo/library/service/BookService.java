@@ -9,6 +9,8 @@ public interface BookService {
 
   Book saveBook(Book book);
 
+  Book updateBook(Long id, String tittle, String author, Integer pages);
+
   Book updateComplete(Long id);
 
   void deleteBook(Long id);

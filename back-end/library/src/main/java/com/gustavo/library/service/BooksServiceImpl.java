@@ -31,7 +31,37 @@ public class BooksServiceImpl implements BookService {
 
   @Override
   public Book saveBook(Book book) {
+
+    // List<Book> books = (List<Book>) bookRepository.findAll();
+
+    // for (int i = 0; i < books.size(); i++) {
+    // if (books.get(i).equals(book)) {
+    // System.out.println(books.get(i));
+    // System.out.println(true);
+    // throw new BookNotFoundException(null);
+    // }
+    // }
+
     return bookRepository.save(book);
+
+  }
+
+  @Override
+  public Book updateBook(Long id, String tittle, String author, Integer pages) {
+
+    Optional<Book> book = bookRepository.findById(id);
+
+    if (book.isPresent()) {
+      Book unwrappedBook = book.get();
+      unwrappedBook.setTitle(tittle);
+      unwrappedBook.setAuthor(author);
+      unwrappedBook.setPages(pages);
+
+      return bookRepository.save(unwrappedBook);
+    } else {
+      throw new BookNotFoundException(id);
+    }
+
   }
 
   @Override

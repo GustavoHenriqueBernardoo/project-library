@@ -17,6 +17,7 @@ import lombok.*;
 @RequiredArgsConstructor
 @NoArgsConstructor
 @ToString
+@EqualsAndHashCode
 
 @Entity
 @Table(name = "book")
