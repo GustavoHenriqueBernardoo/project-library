@@ -47,7 +47,7 @@ public class BooksServiceImpl implements BookService {
   }
 
   @Override
-  public Book updateBook(Long id, String tittle, String author, Integer pages) {
+  public Book updateBook(Long id, String tittle, String author, Integer pages, Boolean complete) {
 
     Optional<Book> book = bookRepository.findById(id);
 
@@ -56,6 +56,7 @@ public class BooksServiceImpl implements BookService {
       unwrappedBook.setTitle(tittle);
       unwrappedBook.setAuthor(author);
       unwrappedBook.setPages(pages);
+      unwrappedBook.setComplete(complete);
 
       return bookRepository.save(unwrappedBook);
     } else {

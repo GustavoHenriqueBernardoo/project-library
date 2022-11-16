@@ -9,7 +9,7 @@ public interface BookService {
 
   Book saveBook(Book book);
 
-  Book updateBook(Long id, String tittle, String author, Integer pages);
+  Book updateBook(Long id, String tittle, String author, Integer pages, Boolean complete);
 
   Book updateComplete(Long id);
 
