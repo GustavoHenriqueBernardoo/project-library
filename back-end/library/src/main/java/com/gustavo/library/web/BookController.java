@@ -56,18 +56,17 @@ public class BookController {
     return new ResponseEntity<>(HttpStatus.NOT_FOUND);
   }
 
-  // Update the book complete field
-  // @PutMapping("/{id}")
-  // public ResponseEntity<Book> updateComplete(@PathVariable Long id) {
-  // return new ResponseEntity<Book>(bookService.updateComplete(id),
-  // HttpStatus.OK);
-  // }
-
   @PutMapping("/{id}")
   public ResponseEntity<Book> updateBook(@Valid @RequestBody Book book, @PathVariable Long id) {
     return new ResponseEntity<Book>(
         bookService.updateBook(id, book.getTitle(), book.getAuthor(), book.getPages(), book.getComplete()),
         HttpStatus.OK);
   }
+  // Update the book complete field
+  // @PutMapping("/{id}")
+  // public ResponseEntity<Book> updateComplete(@PathVariable Long id) {
+  // return new ResponseEntity<Book>(bookService.updateComplete(id),
+  // HttpStatus.OK);
+  // }
 
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
@@ -51,12 +50,10 @@ public class LibraryExceptionHandler extends ResponseEntityExceptionHandler {
   }
 
   // Handle the attempt of saving a book twice
-  // @ExceptionHandler(DataIntegrityViolationException.class)
-  // public ResponseEntity<Object>
-  // handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
-  // ErrorResponse error = new ErrorResponse(Arrays.asList("Data Integrity
-  // Violation: You cannot add a book twice."));
+  @ExceptionHandler(DataIntegrityViolationException.class)
+  public ResponseEntity<Object> handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
+    ErrorResponse error = new ErrorResponse(Arrays.asList("Data Integrity  Violation: You cannot add a book twice."));
 
-  // return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
-  // }
+    return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+  }
 }
